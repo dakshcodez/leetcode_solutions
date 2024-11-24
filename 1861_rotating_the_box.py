@@ -17,21 +17,13 @@ def rotateBox(box):
                 r-=1
             l-=1
                 
-    transpose_box=[]
+    ans=[]
     m=len(box)
     n=len(box[0])
     for i in range(n):
         l=[]
-        for j in range(m):
+        for j in range(-1,-m-1,-1):
             l.append(box[j][i])
-        transpose_box.append(l)
-
-    print(transpose_box)
-    ans=[]
-    for i in range(len(transpose_box)):
-        l=[]
-        for j in range(-1,-len(transpose_box[0])-1,-1):
-            l.append(transpose_box[i][j])
         ans.append(l)
 
     return ans

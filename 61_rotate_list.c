@@ -6,7 +6,7 @@ struct ListNode{
     struct ListNode *next;
 };
 
-int countElements(struct Node *head){
+int countElements(struct ListNode *head){
     int count=0;
     while (head != NULL){
         count++;
@@ -28,7 +28,7 @@ struct ListNode* rotateRight(struct ListNode* head, int k) {
         return head;
     }
     
-    for (int i=1; i<=k; i++){
+    for (int i=1; i<=(k%countElements(head)); i++){
         while (temp -> next != NULL){
             old = temp;
             temp = temp -> next;
@@ -77,12 +77,12 @@ struct ListNode* createNewNode(int num){
 int main(){
     struct ListNode* head = NULL;
     // insertAtEnd(&head, 0);
-    // insertAtEnd(&head, 1);
-    // insertAtEnd(&head, 2); 
-    // insertAtEnd(&head, 3);
+    insertAtEnd(&head, 1);
+    insertAtEnd(&head, 2); 
+    insertAtEnd(&head, 3);
     // insertAtEnd(&head, 4);
     // insertAtEnd(&head, 5);
     //display(head);
-    display(rotateRight(head, 4));
+    display(rotateRight(head, 2000000000));
     return 0;
 }

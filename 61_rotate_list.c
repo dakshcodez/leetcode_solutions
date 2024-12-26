@@ -47,27 +47,26 @@ void insertAtEnd(struct ListNode **head, int data){
 }
 
 struct ListNode* rotateRight(struct ListNode* head, int k) {
-    
-    if (head == NULL){
+    if (head == NULL){  // if the list is empty
         printf("Empty List\n");
         return head;
     }
     struct ListNode *temp = head;
     struct ListNode *old = temp;
 
-    if (temp -> next == NULL){
+    if (temp -> next == NULL){  // if there is only one element in the list
         return head;
     }
     
-    for (int i=1; i<=(k%countElements(head)); i++){
+    for (int i=1; i<=(k%countElements(head)); i++){ // k%countElements(head) is used to reduce the number of iterations
         while (temp -> next != NULL){
             old = temp;
             temp = temp -> next;
         }
         
-        old -> next = NULL;
-        temp -> next = head;
-        head = temp;
+        old -> next = NULL; // breaking the link between the last and second last node
+        temp -> next = head;    // connecting the last node to the first node
+        head = temp;    // updating the head
     }
     return temp;
 }

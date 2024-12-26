@@ -6,6 +6,14 @@ struct ListNode{
     struct ListNode *next;
 };
 
+void display(struct ListNode *head){
+    struct ListNode *temp = head;
+    while (temp != NULL){
+        printf("%d\n", temp->val);
+        temp = temp ->next;
+    }
+}
+
 int countElements(struct ListNode *head){
     int count=0;
     while (head != NULL){
@@ -13,6 +21,29 @@ int countElements(struct ListNode *head){
         head= head->next;
     }
     return count;
+}
+
+struct ListNode* createNewNode(int num){
+    struct ListNode* newNode=(struct ListNode*)malloc(sizeof(struct ListNode));
+    newNode->val=num;
+    newNode->next=NULL;
+    return newNode;
+}
+
+void insertAtEnd(struct ListNode **head, int data){
+    struct ListNode* newNode = createNewNode(data);
+
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    struct ListNode* temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+
 }
 
 struct ListNode* rotateRight(struct ListNode* head, int k) {
@@ -39,39 +70,6 @@ struct ListNode* rotateRight(struct ListNode* head, int k) {
         head = temp;
     }
     return temp;
-}
-
-void display(struct ListNode *head){
-    struct ListNode *temp = head;
-    while (temp != NULL){
-        printf("%d\n", temp->val);
-        temp = temp ->next;
-    }
-}
-
-void insertAtEnd(struct ListNode **head, int data){
-    struct ListNode* newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
-    newNode->val = data;
-    newNode->next = NULL;
-
-    if (*head == NULL) {
-        *head = newNode;
-        return;
-    }
-
-    struct ListNode* temp = *head;
-    while (temp->next != NULL) {
-        temp = temp->next;
-    }
-    temp->next = newNode;
-
-}
-
-struct ListNode* createNewNode(int num){
-    struct ListNode* newNode=(struct ListNode*)malloc(sizeof(struct ListNode));
-    newNode->val=num;
-    newNode->next=NULL;
-    return newNode;
 }
 
 int main(){

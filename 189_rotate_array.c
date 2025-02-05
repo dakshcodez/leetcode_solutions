@@ -1,5 +1,7 @@
 #include<stdio.h>
 
+//too slow
+
 void rot(int* nums, int numsSize){
     int temp1 = nums[0];
     for (int i = 0; i < numsSize - 1; i++){

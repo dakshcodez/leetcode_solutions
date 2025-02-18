@@ -22,19 +22,28 @@ public:
         return true;
     }
 
-    void solveSudoku(vector<vector<char>>& board){
+    bool solve(vector<vector<char>>& board){
         for (int row = 0; row < 9; row++){
             for (int col = 0; col < 9; col++){
                 if (board[row][col] == '.'){
                     for (int num = 1; num <= 9; num++){
                         if (isValid(board, row, col, num)){
                             board[row][col] = num + '0';
-                            solveSudoku(board);
+                            if (solve(board)){
+                                return true;
+                            }
+                            board[row][col] = '.';
                         }
                     }
+                    return false;
                 }
             }
         }
+        return true;
+    }
+
+    void solveSudoku(vector<vector<char>>& board){
+        solve(board);
     }
 
     void printBoard(vector<vector<char>>& board){
